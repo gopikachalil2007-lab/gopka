@@ -3,105 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Resume</title>
+    <title>Gopika - Resume</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f8f9fa;
+            --accent: #fd79a8;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+        .resume-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 850px;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
         }
-        h1 {
-            margin-bottom: 5px;
-            color: #2c3e50;
+
+        /* Sidebar Styling */
+        .sidebar {
+            background: var(--dark);
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
-        .contact-info {
-            margin-bottom: 20px;
-            font-size: 0.9em;
-            color: #666;
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: white;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        h2 {
-            border-bottom: 2px solid #2c3e50;
+
+        .sidebar h3 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--secondary);
+            border-bottom: 1px solid #444;
             padding-bottom: 5px;
-            color: #2c3e50;
-            margin-top: 25px;
+            margin-bottom: 10px;
         }
-        .job, .education {
+
+        .contact-info p {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            word-break: break-all;
+            color: #ccc;
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .bar {
+            background: #444;
+            height: 6px;
+            border-radius: 3px;
+            margin-top: 4px;
+            overflow: hidden;
+        }
+
+        .progress {
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            padding: 35px 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            letter-spacing: 1px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
             margin-bottom: 15px;
         }
-        .job-title, .degree {
-            font-weight: bold;
+
+        .summary {
+            font-size: 0.95rem;
+            color: #636e72;
+            line-height: 1.6;
+            margin-bottom: 25px;
         }
-        .date {
-            float: right;
-            color: #777;
-            font-size: 0.9em;
+
+        .section-title {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
         }
-        ul {
-            margin-top: 5px;
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            margin-bottom: 20px;
+            position: relative;
             padding-left: 20px;
+            border-left: 2px solid var(--secondary);
+        }
+
+        .timeline-item h4 {
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        .timeline-item .date {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item p {
+            font-size: 0.88rem;
+            color: #636e72;
+        }
+
+        @media (max-width: 650px) {
+            .resume-card {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- Header / Contact Info -->
-    <h1>Your Name</h1>
-    <div class="contact-info">
-        Email: your.email@example.com | Phone: (123) 456-7890 | Location: Your City, Country
+<div class="resume-card">
+    <!-- Left Sidebar -->
+    <div class="sidebar">
+        <div class="avatar">G</div>
+        
+        <div class="contact-info">
+            <h3>Contact</h3>
+            <p>📧 gopika@example.com</p>
+            <p>📱 +123 456 7890</p>
+            <p>📍 Kerala, India</p>
+            <p>🌐 github.com/gopika</p>
+        </div>
+
+        <div>
+            <h3>Skills</h3>
+            <ul class="skills-list">
+                <li>
+                    HTML5 & CSS3
+                    <div class="bar"><div class="progress" style="width: 90%;"></div></div>
+                </li>
+                <li>
+                    JavaScript
+                    <div class="bar"><div class="progress" style="width: 75%;"></div></div>
+                </li>
+                <li>
+                    UI/UX Design
+                    <div class="bar"><div class="progress" style="width: 85%;"></div></div>
+                </li>
+                <li>
+                    Git & GitHub
+                    <div class="bar"><div class="progress" style="width: 80%;"></div></div>
+                </li>
+            </ul>
+        </div>
     </div>
 
-    <!-- Summary -->
-    <h2>Professional Summary</h2>
-    <p>A motivated and detail-oriented professional with experience in [Your Industry]. Skilled in [Skill 1], [Skill 2], and [Skill 3]. Looking to leverage my background to contribute effectively to [Target Goal/Company].</p>
+    <!-- Right Content Area -->
+    <div class="main-content">
+        <div class="header">
+            <h1>Gopika</h1>
+            <div class="subtitle">Frontend Developer & Creative Designer</div>
+        </div>
 
-    <!-- Experience -->
-    <h2>Work Experience</h2>
-    
-    <div class="job">
-        <span class="date">Jan 2022 - Present</span>
-        <div class="job-title">Job Title | Company Name</div>
-        <ul>
-            <li>Achieved [key accomplishment] by implementing [action taken].</li>
-            <li>Managed daily operations and collaborated with cross-functional teams.</li>
-            <li>Improved efficiency by X% through optimized processes.</li>
-        </ul>
+        <p class="summary">
+            Passionate and creative developer with a strong foundation in modern web technologies. Dedicated to crafting aesthetic, user-friendly digital experiences and turning imaginative concepts into functional code.
+        </p>
+
+        <h3 class="section-title">Projects</h3>
+        <div style="margin-top: 15px;">
+            <div class="timeline-item">
+                <h4>Interactive Portfolio Website</h4>
+                <div class="date">2026</div>
+                <p>Designed and built a responsive personal showcase using HTML5, CSS custom properties, and JavaScript animations.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>E-Commerce UI Prototype</h4>
+                <div class="date">2025</div>
+                <p>Created clean, user-centric wireframes and interactive frontend templates for a modern shopping experience.</p>
+            </div>
+        </div>
+
+        <h3 class="section-title">Education</h3>
+        <div style="margin-top: 15px;">
+            <div class="timeline-item">
+                <h4>Bachelor of Computer Science / IT</h4>
+                <div class="date">2023 - Present</div>
+                <p>Focusing on web technologies, software engineering principles, and creative design.</p>
+            </div>
+        </div>
     </div>
-
-    <div class="job">
-        <span class="date">Jun 2020 - Dec 2021</span>
-        <div class="job-title">Previous Job Title | Previous Company</div>
-        <ul>
-            <li>Assisted in leading projects focused on [project scope].</li>
-            <li>Resolved customer issues promptly, maintaining high satisfaction scores.</li>
-        </ul>
-    </div>
-
-    <!-- Education -->
-    <h2>Education</h2>
-    <div class="education">
-        <span class="date">2016 - 2020</span>
-        <div class="degree">Bachelor of Science in Your Field</div>
-        <div>Your University Name, City</div>
-    </div>
-
-    <!-- Skills -->
-    <h2>Skills</h2>
-    <ul>
-        <li><strong>Technical:</strong> HTML, CSS, JavaScript, Microsoft Office</li>
-        <li><strong>Soft Skills:</strong> Leadership, Communication, Problem-Solving, Teamwork</li>
-    </ul>
 </div>
 
 </body>
